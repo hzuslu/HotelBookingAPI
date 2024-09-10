@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Otel.BusinessLayer.Abstract
 {
-    internal interface IStaffService : IGenericService<Staff>
+    public interface IStaffService : IGenericService<Staff>
     {
     }
 }

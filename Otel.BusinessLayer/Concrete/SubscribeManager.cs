@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Otel.BusinessLayer.Concrete
 {
-    internal class SubscribeManager : ISubscribeService
+    public class SubscribeManager : ISubscribeService
     {
         private readonly ISubscribeDal _subscribeDal;
 
