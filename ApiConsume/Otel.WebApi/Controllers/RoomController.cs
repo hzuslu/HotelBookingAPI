@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Otel.BusinessLayer.Abstract;
+using Otel.DtoLayer.DTOs.RoomDTO;
 using Otel.EntityLayer.Concrete;
 
 namespace Otel.WebApi.Controllers
@@ -10,10 +11,13 @@ namespace Otel.WebApi.Controllers
     public class RoomController : ControllerBase
     {
         private readonly IRoomService _roomService;
+        private readonly IMapper _mapper;
 
-        public RoomController(IRoomService roomService)
+
+        public RoomController(IRoomService roomService, IMapper mapper)
         {
             _roomService = roomService;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -31,16 +35,26 @@ namespace Otel.WebApi.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateRoom(Room room)
+        public IActionResult UpdateRoom(UpdateRoomDTO updateRoomDTO)
         {
-            _roomService.TUpdate(room);
-            return Ok();
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var value = _mapper.Map<Room>(updateRoomDTO);
+
+            _roomService.TUpdate(value);
+            return Ok("Updated Successfully");
         }
 
         [HttpPost]
-        public IActionResult AddRoom(Room room)
+        public IActionResult AddRoom(RoomAddDTO roomAddDTO)
         {
-            _roomService.TInsert(room);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var values = _mapper.Map<Room>(roomAddDTO);
+            _roomService.TInsert(values);
+
             return Ok();
         }
 

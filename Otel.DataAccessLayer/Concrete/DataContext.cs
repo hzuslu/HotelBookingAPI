@@ -1,10 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Otel.EntityLayer.Concrete;
-using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace Otel.DataAccessLayer.Concrete
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<AppUser, AppRole , int>
     {
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Service> Services { get; set; }
@@ -22,3 +22,4 @@ namespace Otel.DataAccessLayer.Concrete
 
     }
 }
+ 

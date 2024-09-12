@@ -3,6 +3,7 @@ using Otel.BusinessLayer.Concrete;
 using Otel.DataAccessLayer.Abstract;
 using Otel.DataAccessLayer.Concrete;
 using Otel.DataAccessLayer.EntityFramework;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,8 @@ builder.Services.AddScoped<IRoomService, RoomManager>();
 builder.Services.AddScoped<ISubscribeService, SubscribeManager>();
 builder.Services.AddScoped<ITestimonialService, TestimonialManager>();
 builder.Services.AddScoped<IServiceService, ServiceManager>();
+
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 builder.Services.AddCors(opt =>
 {

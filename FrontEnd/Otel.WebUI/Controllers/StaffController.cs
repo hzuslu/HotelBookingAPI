@@ -13,6 +13,7 @@ namespace Otel.WebUI.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
@@ -48,7 +49,7 @@ namespace Otel.WebUI.Controllers
             return View();
         }
 
-
+        [HttpGet]
         public async Task<IActionResult> DeleteStaff(int id)
         {
             var client = _httpClientFactory.CreateClient();
@@ -60,6 +61,46 @@ namespace Otel.WebUI.Controllers
             return View();
         }
 
+        [HttpGet]
+        public async Task<IActionResult> UpdateStaff(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var response = await client.GetAsync($"https://localhost:7250/api/Staff/{id}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonData = await response.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<UpdateStaffViewModel>(jsonData);
+
+                if (values != null)
+                    return View(values);
+                else
+                    ModelState.AddModelError(string.Empty, "No staff data found.");
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "An error occurred while retrieving staff data.");
+            }
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateStaff(UpdateStaffViewModel updateStaffViewModel)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(updateStaffViewModel);
+            StringContent stringContent = new StringContent(jsonData, System.Text.Encoding.UTF8, "application/json");
+
+            var response = await client.PutAsync("https://localhost:7250/api/Staff", stringContent);
+
+            if (response.IsSuccessStatusCode)
+                return RedirectToAction("Index");
+
+            ModelState.AddModelError(string.Empty, "An error occurred while adding the staff.");
+            return View();
+
+        }
 
     }
 }

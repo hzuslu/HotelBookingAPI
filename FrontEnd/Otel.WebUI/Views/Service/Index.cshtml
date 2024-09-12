@@ -1,0 +1,44 @@
+﻿@model List<ResultServiceDTO>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Service Management</h2>
+
+    <div class="mb-3">
+        <a href="@Url.Action("AddService", "Service")" class="btn btn-primary">New Service</a>
+    </div>
+
+    <table class="table table-hover table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Service Icon</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var service in Model)
+            {
+                <tr>
+                    <td>@service.ServiceId</td>
+                    <td><img src="~/images/@service.ServiceIcon" alt="@service.Title" class="img-thumbnail" style="width: 50px; height: auto;" /></td>
+                    <td>@service.Title</td>
+                    <td>@service.Description</td>
+                    <td>
+                        <a href="@Url.Action("UpdateService", "Service", new { id = service.ServiceId })" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="@Url.Action("DeleteService", "Service", new { id = service.ServiceId })" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this service?');">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+

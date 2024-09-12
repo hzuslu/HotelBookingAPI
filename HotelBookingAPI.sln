@@ -8,6 +8,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontEnd", "FrontEnd", "{D9BE8367-702E-4E0B-A36D-81D4687C9C68}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ToDoList", "ToDoList", "{94F73083-54FB-4BBE-A012-491A0377208F}"
+	ProjectSection(SolutionItems) = preProject
+		TextFile2.txt = TextFile2.txt
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Otel.WebApi", "ApiConsume\Otel.WebApi\Otel.WebApi.csproj", "{51A28E47-1DE2-45E6-8D19-B3A4F5B10A70}"
 EndProject
