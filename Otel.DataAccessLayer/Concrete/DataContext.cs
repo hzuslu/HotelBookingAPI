@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Otel.EntityLayer.Concrete;
-using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace Otel.DataAccessLayer.Concrete
 {

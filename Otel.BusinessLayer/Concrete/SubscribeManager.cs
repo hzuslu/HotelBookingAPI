@@ -1,11 +1,6 @@
 ﻿using Otel.BusinessLayer.Abstract;
 using Otel.DataAccessLayer.Abstract;
 using Otel.EntityLayer.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Otel.BusinessLayer.Concrete
 {
@@ -20,12 +15,12 @@ namespace Otel.BusinessLayer.Concrete
 
         public void TDelete(Subscribe entity)
         {
-           _subscribeDal.Delete(entity);
+            _subscribeDal.Delete(entity);
         }
 
         public Subscribe TGetByID(int id)
         {
-           return _subscribeDal.GetByID(id);
+            return _subscribeDal.GetByID(id);
         }
 
         public List<Subscribe> TGetList()
@@ -35,12 +30,12 @@ namespace Otel.BusinessLayer.Concrete
 
         public void TInsert(Subscribe entity)
         {
-           _subscribeDal.Insert(entity);
+            _subscribeDal.Insert(entity);
         }
 
         public void TUpdate(Subscribe entity)
         {
-           _subscribeDal.Update(entity);
+            _subscribeDal.Update(entity);
         }
     }
 }

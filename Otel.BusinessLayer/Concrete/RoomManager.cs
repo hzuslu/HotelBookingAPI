@@ -1,11 +1,6 @@
 ﻿using Otel.BusinessLayer.Abstract;
 using Otel.DataAccessLayer.Abstract;
 using Otel.EntityLayer.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Otel.BusinessLayer.Concrete
 {
@@ -20,22 +15,22 @@ namespace Otel.BusinessLayer.Concrete
 
         public void TDelete(Room entity)
         {
-           _roomDal.Delete(entity);
+            _roomDal.Delete(entity);
         }
 
         public Room TGetByID(int id)
         {
-           return _roomDal.GetByID(id);
+            return _roomDal.GetByID(id);
         }
 
         public List<Room> TGetList()
         {
-           return _roomDal.GetList();
+            return _roomDal.GetList();
         }
 
         public void TInsert(Room entity)
         {
-           _roomDal.Insert(entity);
+            _roomDal.Insert(entity);
         }
 
         public void TUpdate(Room entity)

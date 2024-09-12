@@ -11,7 +11,7 @@ using Otel.DataAccessLayer.Concrete;
 namespace Otel.DataAccessLayer.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240907002732_mig1")]
+    [Migration("20240911234056_mig1")]
     partial class mig1
     {
         /// <inheritdoc />

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Otel.BusinessLayer.Abstract;
 using Otel.EntityLayer.Concrete;
 
@@ -44,7 +43,7 @@ namespace Otel.WebApi.Controllers
             return Ok();
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteService(int id)
         {
             var service = _serviceService.TGetByID(id);

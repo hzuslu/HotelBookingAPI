@@ -23,4 +23,10 @@
     <ProjectReference Include="..\Otel.EntityLayer\Otel.EntityLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DTOs\SubscribeDTO\" />
+    <Folder Include="DTOs\ServiceDTO\" />
+    <Folder Include="DTOs\StaffDTO\" />
+  </ItemGroup>
+
 </Project>
