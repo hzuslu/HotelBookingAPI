@@ -16,6 +16,8 @@ builder.Services.AddScoped<IRoomDal, EfRoomDAL>();
 builder.Services.AddScoped<ISubscribeDal, EfSubscribeDAL>();
 builder.Services.AddScoped<ITestimonialDal, EfTestimonialDAL>();
 builder.Services.AddScoped<IServiceDal, EfServiceDAL>();
+builder.Services.AddScoped<IAboutDal, EfAboutDAL>();
+
 
 // BusinessLayer
 builder.Services.AddScoped<IStaffService, StaffManager>();
@@ -23,6 +25,8 @@ builder.Services.AddScoped<IRoomService, RoomManager>();
 builder.Services.AddScoped<ISubscribeService, SubscribeManager>();
 builder.Services.AddScoped<ITestimonialService, TestimonialManager>();
 builder.Services.AddScoped<IServiceService, ServiceManager>();
+builder.Services.AddScoped<IAboutService, AboutManager>();
+
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 

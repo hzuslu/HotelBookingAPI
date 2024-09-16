@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Otel.EntityLayer.Concrete;
+using Otel.WebUI.DTOs.AboutDTO;
 using Otel.WebUI.DTOs.LoginDTO;
 using Otel.WebUI.DTOs.RegisterDTO;
 using Otel.WebUI.DTOs.ServiceDTO;
@@ -17,6 +18,10 @@ namespace Otel.WebUI.Mapping
             CreateMap<CreateUserDTO, AppUser>().ReverseMap();
 
             CreateMap<LoginUserDTO, AppUser>().ReverseMap();
+
+            CreateMap<ResultAboutDTO, About>().ReverseMap();
+            CreateMap<UpdateAboutDTO, About>().ReverseMap();
+
         }
     }
 }

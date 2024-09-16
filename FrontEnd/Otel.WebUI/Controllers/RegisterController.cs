@@ -45,7 +45,7 @@ namespace Otel.WebUI.Controllers
 
             foreach (var error in result.Errors)
                 ModelState.AddModelError("", error.Description);
-            
+
 
             return View(createUserDTO);
         }
