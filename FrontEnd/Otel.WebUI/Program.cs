@@ -10,6 +10,9 @@ builder.Services.AddHttpClient();
 builder.Services.AddDbContext<DataContext>();
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<DataContext>();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+
 
 
 var app = builder.Build();
