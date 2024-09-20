@@ -2,15 +2,14 @@
 using Newtonsoft.Json;
 using Otel.EntityLayer.Concrete;
 using Otel.WebUI.DTOs.BookingDTO;
-using Otel.WebUI.Models.Staff;
 
 namespace Otel.WebUI.Controllers
 {
-    public class BookingAdminController : Controller
+    public class AdminBookingController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public BookingAdminController(IHttpClientFactory httpClientFactory)
+        public AdminBookingController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }

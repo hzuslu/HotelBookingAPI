@@ -2,9 +2,6 @@
 using Newtonsoft.Json;
 using Otel.EntityLayer.Concrete;
 using Otel.WebUI.DTOs.BookingDTO;
-using Otel.WebUI.DTOs.RoomDTO;
-using Otel.WebUI.Models.Staff;
-using System.Net.Http.Json;
 using System.Text;
 
 namespace Otel.WebUI.Controllers

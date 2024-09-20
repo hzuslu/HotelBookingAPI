@@ -1,6 +1,8 @@
-﻿namespace Otel.WebUI.Models.Testimonial
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace Otel.WebUI.DTOs.TestimonialDTO
 {
-    public class TestimonialViewModel
+    public class AddTestimonialDTO
     {
         public int TestimonialId { get; set; }
 
@@ -11,4 +13,3 @@
         public required string Image { get; set; }
     }
 }
-

@@ -8,7 +8,7 @@ namespace RapidApiConsume.Controllers
     {
         public async Task<IActionResult> Index([FromForm] string cityName)
         {
-           cityName = cityName ?? "paris";
+            cityName = cityName ?? "paris";
             var client = new HttpClient();
             var request = new HttpRequestMessage
             {

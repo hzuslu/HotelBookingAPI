@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Net.Http.Headers;
-
-using RapidApiConsume.Models;
 using Newtonsoft.Json;
-using System.Linq;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using RapidApiConsume.Models;
 
 namespace RapidApiConsume.Controllers
 {
