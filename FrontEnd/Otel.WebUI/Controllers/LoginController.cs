@@ -29,7 +29,7 @@ namespace Otel.WebUI.Controllers
             var result = await _signInManager.PasswordSignInAsync(loginUserDTO.UserName, loginUserDTO.Password, false, false);
 
             if (result.Succeeded)
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "AdminBooking");
             else
             {
                 ModelState.AddModelError("", "Invalid Login Attempt");

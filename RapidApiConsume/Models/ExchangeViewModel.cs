@@ -1,6 +1,6 @@
 ﻿namespace RapidApiConsume.Models
 {
-     
+
 
     public class Rootobject
     {

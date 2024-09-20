@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using Otel.WebUI.Models.Testimonial;
+using Otel.WebUI.DTOs.TestimonialDTO;
 
 namespace Otel.WebUI.Controllers
 {
@@ -18,13 +18,16 @@ namespace Otel.WebUI.Controllers
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:7250/api/Testimonial");
+
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<TestimonialViewModel>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<ResultTestimonialDTO>>(jsonData);
                 return View(values);
             }
-            return View();
+
+            ModelState.AddModelError(string.Empty, "An error occurred while retrieving testimonials.");
+            return View(new List<ResultTestimonialDTO>());
         }
 
         [HttpGet]
@@ -34,10 +37,10 @@ namespace Otel.WebUI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddTestimonial(TestimonialViewModel model)
+        public async Task<IActionResult> AddTestimonial(AddTestimonialDTO model)
         {
             var client = _httpClientFactory.CreateClient();
-            var jsonData = System.Text.Json.JsonSerializer.Serialize(model);
+            var jsonData = JsonConvert.SerializeObject(model); // Using JsonConvert here for consistency
             var jsonContent = new StringContent(jsonData, System.Text.Encoding.UTF8, "application/json");
 
             var response = await client.PostAsync("https://localhost:7250/api/Testimonial", jsonContent);
@@ -46,7 +49,7 @@ namespace Otel.WebUI.Controllers
                 return RedirectToAction("Index");
 
             ModelState.AddModelError(string.Empty, "An error occurred while adding the testimonial.");
-            return View();
+            return View(model);
         }
 
         [HttpGet]
@@ -54,11 +57,12 @@ namespace Otel.WebUI.Controllers
         {
             var client = _httpClientFactory.CreateClient();
             var response = await client.DeleteAsync($"https://localhost:7250/api/Testimonial/{id}");
+
             if (response.IsSuccessStatusCode)
                 return RedirectToAction("Index");
 
             ModelState.AddModelError(string.Empty, "An error occurred while deleting the testimonial.");
-            return View();
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -70,12 +74,12 @@ namespace Otel.WebUI.Controllers
             if (response.IsSuccessStatusCode)
             {
                 var jsonData = await response.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<TestimonialViewModel>(jsonData);
+                var values = JsonConvert.DeserializeObject<UpdateTestimonialDTO>(jsonData);
 
                 if (values != null)
                     return View(values);
-                else
-                    ModelState.AddModelError(string.Empty, "No testimonial data found.");
+
+                ModelState.AddModelError(string.Empty, "No testimonial data found.");
             }
             else
             {
@@ -86,20 +90,19 @@ namespace Otel.WebUI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateTestimonial(TestimonialViewModel testimonialViewModel)
+        public async Task<IActionResult> UpdateTestimonial(UpdateTestimonialDTO model)
         {
             var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(testimonialViewModel);
-            StringContent stringContent = new StringContent(jsonData, System.Text.Encoding.UTF8, "application/json");
+            var jsonData = JsonConvert.SerializeObject(model); // Consistent usage
+            var stringContent = new StringContent(jsonData, System.Text.Encoding.UTF8, "application/json");
 
             var response = await client.PutAsync("https://localhost:7250/api/Testimonial", stringContent);
 
             if (response.IsSuccessStatusCode)
                 return RedirectToAction("Index");
 
-            ModelState.AddModelError(string.Empty, "An error occurred while adding the testimonial.");
-            return View();
-
+            ModelState.AddModelError(string.Empty, "An error occurred while updating the testimonial.");
+            return View(model);
         }
     }
 }

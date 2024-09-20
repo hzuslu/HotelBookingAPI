@@ -1,4 +1,4 @@
-﻿@model List<TestimonialViewModel>
+﻿@model List<ResultTestimonialDTO>
 
 
 @{
@@ -40,8 +40,8 @@
                         }
                     </td>
                     <td>
-                        <a href="@Url.Action("Update", "Testimonial", new { id = testimonial.TestimonialId })" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="@Url.Action("Delete", "Testimonial", new { id = testimonial.TestimonialId })" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this testimonial?');">Delete</a>
+                        <a href="@Url.Action("UpdateTestimonial", "Testimonial", new { id = testimonial.TestimonialId })" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="@Url.Action("DeleteTestimonial", "Testimonial", new { id = testimonial.TestimonialId })" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this testimonial?');">Delete</a>
                     </td>
                 </tr>
             }

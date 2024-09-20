@@ -20,7 +20,7 @@ namespace RapidApiConsume.Controllers
                     { "x-rapidapi-key", "829c4ea854msh9bb0e6eda455a44p153742jsn4eb4c970dc8d" },
                     { "x-rapidapi-host", "booking-com15.p.rapidapi.com" },
                 },
-                };
+            };
             using (var response = await client.SendAsync(request))
             {
                 response.EnsureSuccessStatusCode();

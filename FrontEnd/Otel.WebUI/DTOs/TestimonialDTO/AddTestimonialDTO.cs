@@ -1,6 +1,6 @@
-﻿namespace Otel.WebUI.Models.Testimonial
+﻿namespace Otel.WebUI.DTOs.TestimonialDTO
 {
-    public class TestimonialViewModel
+    public class AddTestimonialDTO
     {
         public int TestimonialId { get; set; }
 
@@ -11,4 +11,3 @@
         public required string Image { get; set; }
     }
 }
-

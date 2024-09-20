@@ -6,6 +6,7 @@
 }
 
 <div class="container mt-4" style="max-width: 100%;">
+    <h2 class="text-center mb-4">@ViewData["Title"]</h2>
     <div>
         <div class="card-header bg-primary text-white">
             <h4 class="mb-0">Bookings</h4>
@@ -52,18 +53,16 @@
                                 </td>
                                 <td>@(item.SpecialRequest ?? "None")</td>
                                 <td class="text-center">
-                                    <a href="/BookingAdmin/UpdateBooking/@item.BookingId" class="btn btn-warning btn-sm" title="Edit Booking">
+                                    <a href="/AdminBooking/UpdateBooking/@item.BookingId" class="btn btn-warning btn-sm" title="Edit Booking">
                                         <i class="fa fa-pencil"></i> Edit
                                     </a>
-                                    <a href="/BookingAdmin/DeleteBooking/@item.BookingId"
+                                    <a href="/AdminBooking/DeleteBooking/@item.BookingId"
                                        class="btn btn-danger btn-sm"
                                        title="Delete Booking"
                                        onclick="return confirm('Are you sure you want to delete this booking?');">
                                         <i class="fa fa-trash"></i> Delete
                                     </a>
                                 </td>
-
-
                             </tr>
                         }
                     </tbody>

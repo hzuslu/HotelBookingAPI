@@ -670,6 +670,8 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.10.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.1.39" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.0" />
@@ -687,6 +689,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.5" />
+    <PackageReference Include="NETCore.MailKit" Version="2.1.0" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
   </ItemGroup>
 
@@ -758,6 +761,10 @@
     <TypeScriptCompile Include="node_modules\%40popperjs\core\lib\utils\uniqueBy.d.ts" />
     <TypeScriptCompile Include="node_modules\%40popperjs\core\lib\utils\userAgent.d.ts" />
     <TypeScriptCompile Include="node_modules\%40popperjs\core\lib\utils\within.d.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ValidationRules\AdminRoomValidationRules\" />
   </ItemGroup>
 
 </Project>

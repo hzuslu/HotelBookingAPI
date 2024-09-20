@@ -1,5 +1,9 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Otel.DataAccessLayer.Concrete;
 using Otel.EntityLayer.Concrete;
+using Otel.WebUI.DTOs.GuestDTO;
+using Otel.WebUI.ValidationRules.AdminGuestValidationRules;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,8 +16,10 @@ builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<DataCo
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
-
-
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddFluentValidationClientsideAdapters();
+builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+builder.Services.AddScoped<IValidator<CreateGuestDTO>, CreateGuestValidator>();
 
 var app = builder.Build();
 

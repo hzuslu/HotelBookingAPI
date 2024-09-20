@@ -33,7 +33,6 @@ namespace Otel.WebUI.Controllers
             return View();
         }
 
-
         [HttpPost]
         public async Task<IActionResult> AddService(CreateServiceDTO model)
         {

@@ -58,7 +58,7 @@ namespace Otel.WebApi.Controllers
             return Ok();
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteRoom(int id)
         {
             var room = _roomService.TGetByID(id);
