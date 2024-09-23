@@ -2,6 +2,7 @@
 using MySqlConnector;
 using Newtonsoft.Json;
 using Otel.WebUI.DTOs.AboutDTO;
+using Otel.WebUI.Models.Staff;
 using System.Data;
 
 namespace Otel.WebUI.Controllers
@@ -25,7 +26,7 @@ namespace Otel.WebUI.Controllers
                 var values = JsonConvert.DeserializeObject<List<ResultAboutDTO>>(jsonData);
 
                 if (values == null || values.Count == 0)
-                    return View(null);
+                    return View(null); 
 
                 return View(values[0]);
             }
@@ -36,6 +37,7 @@ namespace Otel.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(ResultAboutDTO updateAboutDTO)
         {
+            // Dinamik olarak sayıları al
             using (var connection = new MySqlConnection("server=localhost;user=root;password=root;database=oteldb"))
             {
                 var command = new MySqlCommand("GetCounts", connection)
@@ -66,6 +68,7 @@ namespace Otel.WebUI.Controllers
                 return RedirectToAction("Index", new { id = updateAboutDTO.AboutId });
             }
 
+            // PUT isteği başarısızsa, hata mesajı ekle
             ModelState.AddModelError(string.Empty, "An error occurred while updating the about.");
             return View(updateAboutDTO);
         }

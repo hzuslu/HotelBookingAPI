@@ -1,6 +1,11 @@
 ﻿using Otel.BusinessLayer.Abstract;
 using Otel.DataAccessLayer.Abstract;
 using Otel.EntityLayer.Concrete;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Otel.BusinessLayer.Concrete
 {

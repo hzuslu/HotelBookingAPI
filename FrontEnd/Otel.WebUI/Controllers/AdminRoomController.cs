@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Otel.WebUI.DTOs.RoomDTO;
+using Otel.WebUI.Models.Staff;
 using System.Text;
 
 namespace Otel.WebUI.Controllers
@@ -25,7 +26,7 @@ namespace Otel.WebUI.Controllers
                 var values = JsonConvert.DeserializeObject<List<ResultRoomDTO>>(jsonData);
                 return View(values);
             }
-            return View(new List<ResultRoomDTO>());
+            return View(new List<ResultRoomDTO>()); 
         }
 
         [HttpGet]
@@ -38,7 +39,7 @@ namespace Otel.WebUI.Controllers
         public async Task<IActionResult> AddRoom(AddRoomDTO model)
         {
             var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(model);
+            var jsonData = JsonConvert.SerializeObject(model); 
             var jsonContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
             var response = await client.PostAsync("https://localhost:7250/api/Room", jsonContent);
@@ -47,7 +48,7 @@ namespace Otel.WebUI.Controllers
                 return RedirectToAction("Index");
 
             ModelState.AddModelError(string.Empty, "An error occurred while adding the room.");
-            return View(model);
+            return View(model); 
         }
 
         [HttpGet]
@@ -85,7 +86,7 @@ namespace Otel.WebUI.Controllers
                 return RedirectToAction("Index");
 
             ModelState.AddModelError(string.Empty, "An error occurred while updating the room.");
-            return View(model);
+            return View(model); 
         }
 
         [HttpGet]
