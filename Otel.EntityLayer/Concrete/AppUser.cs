@@ -4,12 +4,15 @@ namespace Otel.EntityLayer.Concrete
 {
     public class AppUser : IdentityUser<int>
     {
-        public String Name { get; set; }
+        public string Name { get; set; } = null!;
 
-        public String LastName { get; set; }
+        public string LastName { get; set; } = null!;
 
-        public String City { get; set; }
+        public string City { get; set; } = null!;
+        public string Department { get; set; } = null!;
 
+        public int WorkLocationId { get; set; }
+        public WorkLocation? WorkLocation { get; set; }
 
     }
 

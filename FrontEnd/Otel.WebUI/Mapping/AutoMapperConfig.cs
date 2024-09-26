@@ -10,6 +10,7 @@ using Otel.WebUI.DTOs.RoomDTO;
 using Otel.WebUI.DTOs.ServiceDTO;
 using Otel.WebUI.DTOs.StaffDTO;
 using Otel.WebUI.DTOs.TestimonialDTO;
+using Otel.WebUI.DTOs.WorkLocationDTO;
 
 namespace Otel.WebUI.Mapping
 {
@@ -56,6 +57,11 @@ namespace Otel.WebUI.Mapping
             CreateMap<DetailContactDTO, Contact>().ReverseMap();
             CreateMap<InboxContactDTO, Contact>().ReverseMap();
             CreateMap<SendMessageDTO, Contact>().ReverseMap();
+
+            //Work Location DTO'Ları 
+            CreateMap<ResultWorkLocationDTO, WorkLocation>().ReverseMap();
+            CreateMap<CreateWorkLocationDTO, WorkLocation>().ReverseMap();
+            CreateMap<UpdateWorkLocationDTO, WorkLocation>().ReverseMap();
         }
     }
 }

@@ -4,5 +4,8 @@ namespace Otel.DataAccessLayer.Abstract
 {
     public interface IContactDal : IGenericDal<Contact>
     {
+        List<Contact> GetRepliedContactsCount();
+        List<Contact> GetUnRepliedContactCount();
+        List<Contact> GetSpesificCategoryContacts(int categoryId);
     }
 }

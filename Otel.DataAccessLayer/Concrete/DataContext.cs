@@ -15,6 +15,9 @@ namespace Otel.DataAccessLayer.Concrete
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Guest> Guests { get; set; }
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<MessageCategory> MessageCategories { get; set; }
+        public DbSet<WorkLocation> WorkLocations { get; set; }
+
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -25,5 +28,20 @@ namespace Otel.DataAccessLayer.Concrete
             optionsBuilder.UseMySql(connectionString, serverVersion);
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder); // Bu satırı eklemeyi unutmayın
+
+            // MessageCategory ve Contact arasındaki ilişki
+            modelBuilder.Entity<Contact>()
+                .HasOne(c => c.MessageCategory) // Contact'ın bir MessageCategory'ye ait olduğunu belirtin
+                .WithMany(cat => cat.Contacts) // Bir MessageCategory'nin birçok Contact'ı olabilir
+                .HasForeignKey(c => c.MessageCategoryId); // Yabancı anahtarın adını belirtin
+
+            modelBuilder.Entity<AppUser>()
+                .HasOne(c => c.WorkLocation)
+                .WithMany(c => c.Users)
+                .HasForeignKey(c => c.WorkLocationId);
+        }
     }
 }

@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace Otel.WebUI.DTOs.TestimonialDTO
+﻿namespace Otel.WebUI.DTOs.TestimonialDTO
 {
     public class UpdateTestimonialDTO
     {

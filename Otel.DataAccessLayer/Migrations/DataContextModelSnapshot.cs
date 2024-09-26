@@ -207,6 +207,10 @@ namespace Otel.DataAccessLayer.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("Department")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("varchar(256)");
@@ -255,6 +259,9 @@ namespace Otel.DataAccessLayer.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("varchar(256)");
 
+                    b.Property<int>("WorkLocationId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -263,6 +270,8 @@ namespace Otel.DataAccessLayer.Migrations
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
+
+                    b.HasIndex("WorkLocationId");
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
@@ -333,6 +342,9 @@ namespace Otel.DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("MessageCategoryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -348,6 +360,8 @@ namespace Otel.DataAccessLayer.Migrations
                         .HasColumnType("longtext");
 
                     b.HasKey("ContactID");
+
+                    b.HasIndex("MessageCategoryId");
 
                     b.ToTable("Contacts");
                 });
@@ -375,6 +389,23 @@ namespace Otel.DataAccessLayer.Migrations
                     b.HasKey("GuestId");
 
                     b.ToTable("Guests");
+                });
+
+            modelBuilder.Entity("Otel.EntityLayer.Concrete.MessageCategory", b =>
+                {
+                    b.Property<int>("MessageCategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("MessageCategoryId"));
+
+                    b.Property<string>("MessageCategoryName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("MessageCategoryId");
+
+                    b.ToTable("MessageCategories");
                 });
 
             modelBuilder.Entity("Otel.EntityLayer.Concrete.Room", b =>
@@ -525,6 +556,27 @@ namespace Otel.DataAccessLayer.Migrations
                     b.ToTable("Testimonials");
                 });
 
+            modelBuilder.Entity("Otel.EntityLayer.Concrete.WorkLocation", b =>
+                {
+                    b.Property<int>("WorkLocationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("WorkLocationId"));
+
+                    b.Property<string>("WorkLocationCityName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("WorkLocationCountry")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("WorkLocationId");
+
+                    b.ToTable("WorkLocations");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.HasOne("Otel.EntityLayer.Concrete.AppRole", null)
@@ -574,6 +626,38 @@ namespace Otel.DataAccessLayer.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Otel.EntityLayer.Concrete.AppUser", b =>
+                {
+                    b.HasOne("Otel.EntityLayer.Concrete.WorkLocation", "WorkLocation")
+                        .WithMany("Users")
+                        .HasForeignKey("WorkLocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("WorkLocation");
+                });
+
+            modelBuilder.Entity("Otel.EntityLayer.Concrete.Contact", b =>
+                {
+                    b.HasOne("Otel.EntityLayer.Concrete.MessageCategory", "MessageCategory")
+                        .WithMany("Contacts")
+                        .HasForeignKey("MessageCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("MessageCategory");
+                });
+
+            modelBuilder.Entity("Otel.EntityLayer.Concrete.MessageCategory", b =>
+                {
+                    b.Navigation("Contacts");
+                });
+
+            modelBuilder.Entity("Otel.EntityLayer.Concrete.WorkLocation", b =>
+                {
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

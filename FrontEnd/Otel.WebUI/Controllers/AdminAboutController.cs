@@ -2,7 +2,6 @@
 using MySqlConnector;
 using Newtonsoft.Json;
 using Otel.WebUI.DTOs.AboutDTO;
-using Otel.WebUI.Models.Staff;
 using System.Data;
 
 namespace Otel.WebUI.Controllers
@@ -26,7 +25,7 @@ namespace Otel.WebUI.Controllers
                 var values = JsonConvert.DeserializeObject<List<ResultAboutDTO>>(jsonData);
 
                 if (values == null || values.Count == 0)
-                    return View(null); 
+                    return View(null);
 
                 return View(values[0]);
             }

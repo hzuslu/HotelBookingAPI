@@ -13,6 +13,16 @@ namespace Otel.BusinessLayer.Concrete
             _contactDal = contactDal;
         }
 
+        public List<Contact> TGetRepliedContactsCount()
+        {
+            return _contactDal.GetRepliedContactsCount();
+        }
+
+        public List<Contact> TGetUnRepliedContactCount()
+        {
+            return _contactDal.GetUnRepliedContactCount();
+        }
+
         public void TDelete(Contact entity)
         {
             _contactDal.Delete(entity);
@@ -36,6 +46,11 @@ namespace Otel.BusinessLayer.Concrete
         public void TUpdate(Contact entity)
         {
             _contactDal.Update(entity);
+        }
+
+        public List<Contact> TGetSpesificCategoryContacts(int categoryId)
+        {
+            return _contactDal.GetSpesificCategoryContacts(categoryId);
         }
     }
 }

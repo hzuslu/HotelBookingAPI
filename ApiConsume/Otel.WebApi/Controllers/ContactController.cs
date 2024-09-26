@@ -62,5 +62,29 @@ namespace Otel.WebApi.Controllers
             _contactService.TDelete(contact);
             return NoContent();
         }
+
+        [HttpGet("replied-count")]
+        public IActionResult GetRepliedContactCount()
+        {
+            return Ok(_contactService.TGetRepliedContactsCount());
+        }
+
+        [HttpGet("unreplied-count")]
+        public IActionResult GetUnrepliedContactCount()
+        {
+            return Ok(_contactService.TGetUnRepliedContactCount());
+        }
+
+        [HttpGet("category/{categoryId}")]
+        public IActionResult GetSpecificCategoryContacts(int categoryId)
+        {
+            var contacts = _contactService.TGetSpesificCategoryContacts(categoryId);
+
+            if (contacts == null || contacts.Count == 0)
+                return NotFound("No contacts found for the specified category.");
+
+            return Ok(contacts);
+        }
+
     }
 }
