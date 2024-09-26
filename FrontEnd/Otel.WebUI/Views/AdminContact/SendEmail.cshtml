@@ -24,7 +24,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="email-left-box">
-                            @await Html.PartialAsync("/Views/AdminContact/EmailSidebarPartial.cshtml")
+                            @await Component.InvokeAsync("_ContactSidebarPartial")
                         </div>
                         <div class="email-right-box">
                             <div class="compose-content mt-5">

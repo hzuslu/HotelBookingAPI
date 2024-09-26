@@ -27,6 +27,7 @@ namespace Otel.WebUI.Controllers
 
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
             var values = JsonConvert.DeserializeObject<List<InboxContactDTO>>(jsonData);
+            ViewBag.InboxCount = values!.Count;
             return View(values);
         }
 
@@ -48,6 +49,33 @@ namespace Otel.WebUI.Controllers
             var value = JsonConvert.DeserializeObject<DetailContactDTO>(jsonData);
 
             return View(value);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteEmail(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var response = await client.DeleteAsync($"https://localhost:7250/api/Contact/{id}");
+            if (response.IsSuccessStatusCode)
+                return RedirectToAction("Inbox");
+
+            ModelState.AddModelError(string.Empty, "An error occurred while deleting the email.");
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> OutgoingMessages()
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:7250/api/Contact/replied-count");
+
+            if (!responseMessage.IsSuccessStatusCode)
+                return View();
+
+            var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            var values = JsonConvert.DeserializeObject<List<OutgoingMessagesDTO>>(jsonData);
+
+            return View(values);
         }
 
         [HttpGet]
@@ -131,34 +159,6 @@ namespace Otel.WebUI.Controllers
 
             ModelState.AddModelError(string.Empty, "An error occurred while sending the email.");
             return View(sendMessageDTO);
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> DeleteEmail(int id)
-        {
-            var client = _httpClientFactory.CreateClient();
-            var response = await client.DeleteAsync($"https://localhost:7250/api/Contact/{id}");
-            if (response.IsSuccessStatusCode)
-                return RedirectToAction("Inbox");
-
-            ModelState.AddModelError(string.Empty, "An error occurred while deleting the email.");
-            return View();
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> OutgoingMessages()
-        {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7250/api/Contact");
-
-            if (!responseMessage.IsSuccessStatusCode)
-                return View();
-
-            var jsonData = await responseMessage.Content.ReadAsStringAsync();
-            var values = JsonConvert.DeserializeObject<List<OutgoingMessagesDTO>>(jsonData);
-            var filteredValues = values!.Where(contact => contact.IsReplied == true).ToList();
-
-            return View(filteredValues);
         }
 
     }

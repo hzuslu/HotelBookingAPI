@@ -62,5 +62,17 @@ namespace Otel.WebApi.Controllers
             _contactService.TDelete(contact);
             return NoContent();
         }
+
+        [HttpGet("replied-count")]
+        public IActionResult GetRepliedContactCount()
+        {
+            return Ok(_contactService.TGetRepliedContactsCount());
+        }
+
+        [HttpGet("unreplied-count")]
+        public IActionResult GetUnrepliedContactCount()
+        {
+            return Ok(_contactService.TGetUnRepliedContactCount());
+        }
     }
 }

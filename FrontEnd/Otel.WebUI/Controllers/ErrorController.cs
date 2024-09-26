@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace Otel.WebUI.Controllers
 {
     [AllowAnonymous]
-    public class DefaultController : Controller
+    public class ErrorController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Error404()
         {
             return View();
         }

@@ -5,9 +5,9 @@ using Otel.EntityLayer.Concrete;
 
 namespace Otel.DataAccessLayer.EntityFramework
 {
-    public class EfGuestDAL : GenericRepository<Guest>, IGuestDal
+    public class EfMessageCategoryDAL : GenericRepository<MessageCategory>, IMessageCategoryDal
     {
-        public EfGuestDAL(DataContext dataContext) : base(dataContext)
+        public EfMessageCategoryDAL(DataContext dataContext) : base(dataContext)
         {
         }
     }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Otel.EntityLayer.Concrete;
 using Otel.WebUI.DTOs.BookingDTO;
@@ -6,6 +7,8 @@ using System.Text;
 
 namespace Otel.WebUI.Controllers
 {
+    [AllowAnonymous]
+
     public class BookingController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

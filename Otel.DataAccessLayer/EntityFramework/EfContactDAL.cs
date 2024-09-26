@@ -7,9 +7,22 @@ namespace Otel.DataAccessLayer.EntityFramework
 {
     public class EfContactDAL : GenericRepository<Contact>, IContactDal
     {
+        private readonly DataContext _context;
+
         public EfContactDAL(DataContext dataContext) : base(dataContext)
         {
+            _context = dataContext;
+        }
+
+        public List<Contact> GetRepliedContactsCount()
+        {
+            return _context.Set<Contact>().Where(item => item.IsReplied).ToList();
+        }
+
+        public List<Contact> GetUnRepliedContactCount()
+        {
+            return _context.Set<Contact>().Where(item => !item.IsReplied).ToList();
+
         }
     }
 }
-

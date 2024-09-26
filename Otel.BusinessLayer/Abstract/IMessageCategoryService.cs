@@ -2,7 +2,7 @@
 
 namespace Otel.BusinessLayer.Abstract
 {
-    public interface IGuestService : IGenericService<Guest>
+    public interface IMessageCategoryService : IGenericService<MessageCategory>
     {
     }
 }

@@ -13,6 +13,16 @@ namespace Otel.BusinessLayer.Concrete
             _contactDal = contactDal;
         }
 
+        public List<Contact> TGetRepliedContactsCount()
+        {
+            return _contactDal.GetRepliedContactsCount();
+        }
+
+        public List<Contact> TGetUnRepliedContactCount()
+        {
+            return _contactDal.GetUnRepliedContactCount();
+        }
+
         public void TDelete(Contact entity)
         {
             _contactDal.Delete(entity);

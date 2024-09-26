@@ -1,4 +1,6 @@
-﻿namespace Otel.WebUI.DTOs.ContactDTO
+﻿using Otel.EntityLayer.Concrete;
+
+namespace Otel.WebUI.DTOs.ContactDTO
 {
     public class CreateContactDTO
     {
@@ -11,5 +13,7 @@
         public string Message { get; set; }
 
         public DateTime Date { get; set; }
+        public int MessageCategoryId { get; set; }
+
     }
 }

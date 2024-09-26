@@ -2,7 +2,7 @@
 
 namespace Otel.DataAccessLayer.Abstract
 {
-    public interface IMessageCategoryDal : IGenericDal<MessageCategory>
+    public interface IAboutDal : IGenericDal<About>
     {
     }
 }
