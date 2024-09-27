@@ -659,6 +659,22 @@ namespace Otel.DataAccessLayer.Migrations
                 {
                     b.Navigation("Users");
                 });
+
+            modelBuilder.Entity("Otel.EntityLayer.Concrete.Contact", b =>
+                {
+                    b.HasOne("Otel.EntityLayer.Concrete.MessageCategory", "MessageCategory")
+                        .WithMany("Contacts")
+                        .HasForeignKey("MessageCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("MessageCategory");
+                });
+
+            modelBuilder.Entity("Otel.EntityLayer.Concrete.MessageCategory", b =>
+                {
+                    b.Navigation("Contacts");
+                });
 #pragma warning restore 612, 618
         }
     }

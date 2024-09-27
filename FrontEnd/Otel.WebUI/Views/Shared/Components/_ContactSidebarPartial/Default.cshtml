@@ -5,7 +5,7 @@
 
     <div class="mail-list mt-4">
 
-        <a href="/AdminContact/Inbox" class="list-group-item border-0 p-r-0">
+         <a href="/AdminContact/Inbox" class="list-group-item border-0 p-r-0">
             <i class="fa fa-inbox font-18 align-middle mr-2"></i>
             <b>Inbox</b>
             <span class="badge badge-primary badge-sm float-right m-t-5">@ViewBag.InboxCount</span>
@@ -43,9 +43,9 @@
             foreach (var item in ViewBag.Categories)
             {
                 <a href="/AdminContact/Inbox?categoryId=@item.MessageCategoryId" class="list-group-item border-0">
-                    <span class="fa fa-briefcase f-s-14 mr-2"></span>
+            <span class="fa fa-briefcase f-s-14 mr-2"></span>
                     @item.MessageCategoryName
-                </a>
+        </a>
             }
         }
         else

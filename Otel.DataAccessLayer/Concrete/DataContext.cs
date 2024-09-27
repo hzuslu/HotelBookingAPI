@@ -37,6 +37,17 @@ namespace Otel.DataAccessLayer.Concrete
                 .HasOne(c => c.MessageCategory) // Contact'ın bir MessageCategory'ye ait olduğunu belirtin
                 .WithMany(cat => cat.Contacts) // Bir MessageCategory'nin birçok Contact'ı olabilir
                 .HasForeignKey(c => c.MessageCategoryId); // Yabancı anahtarın adını belirtin
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder); // Bu satırı eklemeyi unutmayın
+
+            // MessageCategory ve Contact arasındaki ilişki
+            modelBuilder.Entity<Contact>()
+                .HasOne(c => c.MessageCategory) // Contact'ın bir MessageCategory'ye ait olduğunu belirtin
+                .WithMany(cat => cat.Contacts) // Bir MessageCategory'nin birçok Contact'ı olabilir
+                .HasForeignKey(c => c.MessageCategoryId); // Yabancı anahtarın adını belirtin
 
             modelBuilder.Entity<AppUser>()
                 .HasOne(c => c.WorkLocation)

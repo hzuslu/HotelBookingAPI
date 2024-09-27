@@ -30,8 +30,8 @@ namespace Otel.WebUI.ViewComponents.Contact
             List<ResultMessageCategoryDTO> categories = await GetCategoriesAsync(client);
             ViewBag.Categories = categories;
 
-            return View();
-        }
+                return View();
+            }
 
         private async Task<List<InboxContactDTO>> GetContactsAsync(HttpClient client)
         {
@@ -42,11 +42,11 @@ namespace Otel.WebUI.ViewComponents.Contact
         }
 
         private async Task<List<InboxContactDTO>> GetRepliedContactsAsync(HttpClient client)
-        {
+            {
             var response = await client.GetAsync("https://localhost:7250/api/Contact/replied-count");
             var jsonData = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<List<InboxContactDTO>>(jsonData)!;
-        }
+            }
 
         private async Task<List<ResultMessageCategoryDTO>> GetCategoriesAsync(HttpClient client)
         {
