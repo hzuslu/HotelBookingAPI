@@ -30,13 +30,12 @@ namespace Otel.DataAccessLayer.Concrete
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder); // Bu satırı eklemeyi unutmayın
+            base.OnModelCreating(modelBuilder);
 
-            // MessageCategory ve Contact arasındaki ilişki
             modelBuilder.Entity<Contact>()
-                .HasOne(c => c.MessageCategory) // Contact'ın bir MessageCategory'ye ait olduğunu belirtin
-                .WithMany(cat => cat.Contacts) // Bir MessageCategory'nin birçok Contact'ı olabilir
-                .HasForeignKey(c => c.MessageCategoryId); // Yabancı anahtarın adını belirtin
+                .HasOne(c => c.MessageCategory)
+                .WithMany(cat => cat.Contacts)
+                .HasForeignKey(c => c.MessageCategoryId);
 
             modelBuilder.Entity<AppUser>()
                 .HasOne(c => c.WorkLocation)

@@ -3,7 +3,10 @@ using Otel.BusinessLayer.Concrete;
 using Otel.DataAccessLayer.Abstract;
 using Otel.DataAccessLayer.Concrete;
 using Otel.DataAccessLayer.EntityFramework;
+using Otel.EntityLayer.Concrete;
 using System.Reflection;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,10 +49,16 @@ builder.Services.AddCors(opt =>
     });
 });
 
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+});
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 
 var app = builder.Build();
 

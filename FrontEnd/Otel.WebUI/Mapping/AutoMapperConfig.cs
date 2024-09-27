@@ -57,6 +57,7 @@ namespace Otel.WebUI.Mapping
             CreateMap<DetailContactDTO, Contact>().ReverseMap();
             CreateMap<InboxContactDTO, Contact>().ReverseMap();
             CreateMap<SendMessageDTO, Contact>().ReverseMap();
+            CreateMap<AdminDashboardContactDTO, Contact>().ReverseMap();
 
             //Work Location DTO'Ları 
             CreateMap<ResultWorkLocationDTO, WorkLocation>().ReverseMap();

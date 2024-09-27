@@ -7,5 +7,7 @@ namespace Otel.DataAccessLayer.Abstract
         List<Contact> GetRepliedContactsCount();
         List<Contact> GetUnRepliedContactCount();
         List<Contact> GetSpesificCategoryContacts(int categoryId);
+
+        List<Contact> GetContactWithCategory();
     }
 }

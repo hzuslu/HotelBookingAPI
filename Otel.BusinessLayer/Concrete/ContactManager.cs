@@ -52,5 +52,10 @@ namespace Otel.BusinessLayer.Concrete
         {
             return _contactDal.GetSpesificCategoryContacts(categoryId);
         }
+
+        public List<Contact> TGetContactWithCategory()
+        {
+            return _contactDal.GetContactWithCategory();
+        }
     }
 }

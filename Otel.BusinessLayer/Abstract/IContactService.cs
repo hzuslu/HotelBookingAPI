@@ -7,6 +7,7 @@ namespace Otel.BusinessLayer.Abstract
         List<Contact> TGetRepliedContactsCount();
         List<Contact> TGetUnRepliedContactCount();
         List<Contact> TGetSpesificCategoryContacts(int categoryId);
+        List<Contact> TGetContactWithCategory();
 
     }
 }

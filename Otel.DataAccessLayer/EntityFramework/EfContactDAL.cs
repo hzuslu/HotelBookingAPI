@@ -1,4 +1,5 @@
-﻿using Otel.DataAccessLayer.Abstract;
+﻿using Microsoft.EntityFrameworkCore;
+using Otel.DataAccessLayer.Abstract;
 using Otel.DataAccessLayer.Concrete;
 using Otel.DataAccessLayer.Repositories;
 using Otel.EntityLayer.Concrete;
@@ -29,5 +30,12 @@ namespace Otel.DataAccessLayer.EntityFramework
             return [.. _context.Set<Contact>().Where(item => !item.IsReplied)];
 
         }
+
+
+        public new List<Contact> GetContactWithCategory()
+        {
+            return [.. _context.Set<Contact>().Include(c => c.MessageCategory)];
+        }
+
     }
 }

@@ -86,5 +86,12 @@ namespace Otel.WebApi.Controllers
             return Ok(contacts);
         }
 
+        [HttpGet("get-contact-with-category")]
+        public IActionResult GetContactWithCategory()
+        {
+            return Ok(_contactService.TGetContactWithCategory());
+        }
+
+
     }
 }
