@@ -48,6 +48,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+await DataInitializer.TestDataAsync(app);
 app.UseStatusCodePagesWithRedirects("/Error/Error404/?code={0}");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
@@ -55,6 +56,8 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
+
+
 
 app.MapControllerRoute(
     name: "default",

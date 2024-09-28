@@ -27,32 +27,39 @@
                         <div class="email-right-box">
                             <div class="email-list m-t-15">
                                 <div class="row">
-                                    @foreach (var contact in Model)
+                                    @if (Model != null && Model.Any())
                                     {
-                                        <div class="col-md-12">
-                                            <div class="card shadow-sm mb-3">
-                                                <a href="@Url.Action("ReadEmail", "AdminContact", new { id = contact.ContactID })" class="stretched-link">
-                                                    <div class="card-body">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-8">
-                                                                <h6 class="mb-1 font-weight-bold">@contact.Subject</h6>
-                                                                <p class="mb-0 text-muted">Sent on: @contact.Date.ToString("dd-MM-yyyy")</p>
-                                                            </div>
-                                                            <div class="col-md-3 text-right">
-                                                                @if (contact.IsReplied)
-                                                                {
-                                                                    <span class="badge badge-success">Replied</span>
-                                                                }
-                                                                else
-                                                                {
-                                                                    <span class="badge badge-warning">Pending</span>
-                                                                }
+                                        @foreach (var contact in Model)
+                                        {
+                                            <div class="col-md-12">
+                                                <div class="card shadow-sm mb-3">
+                                                    <a href="@Url.Action("ReadEmail", "AdminContact", new { id = contact.ContactID })" class="stretched-link">
+                                                        <div class="card-body">
+                                                            <div class="row align-items-center">
+                                                                <div class="col-md-8">
+                                                                    <h6 class="mb-1 font-weight-bold">@contact.Subject</h6>
+                                                                    <p class="mb-0 text-muted">Sent on: @contact.Date.ToString("dd-MM-yyyy")</p>
+                                                                </div>
+                                                                <div class="col-md-3 text-right">
+                                                                    @if (contact.IsReplied)
+                                                                    {
+                                                                        <span class="badge badge-success">Replied</span>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <span class="badge badge-warning">Pending</span>
+                                                                    }
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </a>
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <p class="text-muted">No messages found.</p>
                                     }
                                 </div>
                             </div>

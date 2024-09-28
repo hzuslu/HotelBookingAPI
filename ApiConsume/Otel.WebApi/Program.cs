@@ -3,10 +3,8 @@ using Otel.BusinessLayer.Concrete;
 using Otel.DataAccessLayer.Abstract;
 using Otel.DataAccessLayer.Concrete;
 using Otel.DataAccessLayer.EntityFramework;
-using Otel.EntityLayer.Concrete;
 using System.Reflection;
 using System.Text.Json.Serialization;
-using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 

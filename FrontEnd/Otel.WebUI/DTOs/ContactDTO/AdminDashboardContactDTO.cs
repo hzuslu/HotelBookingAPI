@@ -1,6 +1,4 @@
-﻿using Otel.EntityLayer.Concrete;
-
-namespace Otel.WebUI.DTOs.ContactDTO
+﻿namespace Otel.WebUI.DTOs.ContactDTO
 {
     public class AdminDashboardContactDTO
     {

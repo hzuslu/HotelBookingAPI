@@ -27,7 +27,7 @@ namespace HotelProject.WebUI.ViewComponents.Default
             if (staffData == null || staffData.Count == 0)
                 return View("Empty");
 
-            return View(staffData);
+            return View(staffData.Take(4).ToList());
         }
     }
 }

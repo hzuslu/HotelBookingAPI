@@ -5,7 +5,7 @@
         public int MessageCategoryId { get; set; }
         public string MessageCategoryName { get; set; }
 
-        public ICollection<Contact> Contacts { get; set; }
+        public ICollection<Contact>? Contacts { get; set; }
 
     }
 }

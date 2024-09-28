@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Otel.WebUI.DTOs.ContactDTO;
-using AutoMapper;
 
 namespace Otel.WebUI.ViewComponents.Dashboard
 {

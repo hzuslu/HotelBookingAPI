@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Otel.WebUI.DTOs.StaffDTO;
-using Otel.WebUI.Models.Staff;
 
 namespace Otel.WebUI.ViewComponents.Dashboard
 {
