@@ -17,7 +17,7 @@ To get started, follow these steps:
 
 ### 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/otelapi.git
+git clone https://github.com/hzuslu/HotelBookingAPI.git
 cd otelapi
   ```
 
