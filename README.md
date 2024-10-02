@@ -40,7 +40,7 @@ Admin Login
 You can log in to the admin panel with the following credentials:
 
 - **Username**: admin
-- **Password**: Admin123
+- **Password**: Admin123.
 
 ## Contact Information
 For inquiries, feedback, or contributions, feel free to reach out:
