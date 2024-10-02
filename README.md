@@ -27,11 +27,11 @@ Open the WebApi -> DataAccessLayer -> DataContext file and locate the connection
 
 ### 3. Apply migrations:
 
-Add migrations using the following command:
+- **Add migrations using the following command:
     ```
     add-migration YourMigrationsName
     ```
-Create or update the database with the following command:
+- **Create or update the database with the following command:
     ```
     update-database
     ```
@@ -39,8 +39,8 @@ Create or update the database with the following command:
 Admin Login
 You can log in to the admin panel with the following credentials:
 
-Username: admin
-Password: Admin123
+- **Username: admin
+- **Password: Admin123
 
 ## Contact Information
 For inquiries, feedback, or contributions, feel free to reach out:
