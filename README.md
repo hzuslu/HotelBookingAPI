@@ -28,11 +28,11 @@ Open the WebApi -> DataAccessLayer -> DataContext file and locate the connection
 ### 3. Apply migrations:
 
 Add migrations using the following command:
-    ```bash
+    ```
     add-migration YourMigrationsName
     ```
 Create or update the database with the following command:
-    ```bash
+    ```
     update-database
     ```
 
